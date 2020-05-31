@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paint v4", "Paint v4\Paint v4.csproj", "{723DE017-12A0-4320-B071-C0391E9FF4D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA0F0DFD-F276-4615-B2AC-CEB84065A97D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{723DE017-12A0-4320-B071-C0391E9FF4D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723DE017-12A0-4320-B071-C0391E9FF4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{723DE017-12A0-4320-B071-C0391E9FF4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723DE017-12A0-4320-B071-C0391E9FF4D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2129105-DC3C-4E5C-BFA7-31544FC268C2}
+	EndGlobalSection
+EndGlobal
