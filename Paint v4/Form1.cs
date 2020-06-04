@@ -21,33 +21,7 @@ namespace Paint_v4
 		Graphics gr1;
 		Bitmap bitmap;
 		Bitmap bitmap1;
-		static Stack<Bitmap> buf = new Stack<Bitmap>();
-		private Point mousePos1;
-		private Point mousePos2;
-		private DraggedFragment draggedFragment;
-		class DraggedFragment
-		{
-			public Rectangle SourceRect;
-			public Point Location;
-
-			public Rectangle Rect
-			{
-				get { return new Rectangle(Location, SourceRect.Size); }
-			}
-
-			public void Fix(Bitmap bitmap)
-			{
-				using (var clone = (Bitmap)bitmap.Clone())
-				using (var gr = Graphics.FromImage(bitmap))
-				{
-					gr.SetClip(SourceRect);
-					gr.Clear(Color.White);
-
-					gr.SetClip(Rect);
-					gr.DrawImage(clone, Location.X - SourceRect.X, Location.Y - SourceRect.Y);
-				}
-			}
-		}
+		
 		public Form1()
 		{
 			InitializeComponent();
@@ -62,8 +36,6 @@ namespace Paint_v4
 			bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
 			bitmap1 = new Bitmap(pictureBox1.Width, pictureBox1.Height);
 
-			buf.Push(bitmap);
-			metroLabel2.Text = buf.Count.ToString();
 			pictureBox1.Image = bitmap;
 		}
 
@@ -77,11 +49,6 @@ namespace Paint_v4
 			Presed = true;
 			x = e.X;
 			y = e.Y;
-			if (draggedFragment != null && !draggedFragment.Rect.Contains(e.Location))
-			{
-				draggedFragment = null;
-				pictureBox1.Invalidate();
-			}
 		}
 
 		private void toolStripButton3_Click(object sender, EventArgs e)// кисть
@@ -116,14 +83,6 @@ namespace Paint_v4
 				pictureBox1.Image = bitmap;
 			}
 		}
-		Rectangle GetRect(Point p1, Point p2)
-		{
-			var x1 = Math.Min(p1.X, p2.X);
-			var x2 = Math.Max(p1.X, p2.X);
-			var y1 = Math.Min(p1.Y, p2.Y);
-			var y2 = Math.Max(p1.Y, p2.Y);
-			return new Rectangle(x1, y1, x2 - x1, y2 - y1);
-		}
 
 		private void toolStripButton5_Click(object sender, EventArgs e)//сохранение
 		{
@@ -150,6 +109,7 @@ namespace Paint_v4
 		private void toolStripButton6_Click(object sender, EventArgs e)// очистка
 		{
 			gr.Clear(Color.White);
+			gr1.Clear(Color.White);
 			pictureBox1.Invalidate();
 		}
 
@@ -214,24 +174,6 @@ namespace Paint_v4
 				}
 				pictureBox1.Invalidate();
 			}
-			
-			if (e.Button == MouseButtons.Right)
-			{
-				
-				if (draggedFragment != null)
-				{
-					
-					draggedFragment.Location.Offset(e.Location.X - mousePos2.X, e.Location.Y - mousePos2.Y);
-					mousePos1 = e.Location;
-				}
-				
-				mousePos2 = e.Location;
-				pictureBox1.Invalidate();
-			}
-			else
-			{
-				mousePos1 = mousePos2 = e.Location;
-			}
 		}
 
 		private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
@@ -263,42 +205,6 @@ namespace Paint_v4
 		{
 			item = Item.Picker;
 		}
-
-		private void button1_Click(object sender, EventArgs e)
-		{
-			if (buf.Count > 0)
-			{
-				pictureBox1.Image = (Bitmap)buf.Pop().Clone();
-				metroLabel2.Text = buf.Count.ToString();
-			}
-
-		}
-
-		private void pictureBox1_Paint(object sender, PaintEventArgs e)
-		{
-			
-			if (draggedFragment != null)
-			{
-				
-				e.Graphics.SetClip(draggedFragment.SourceRect);
-				e.Graphics.Clear(Color.White);
-
-				
-				e.Graphics.SetClip(draggedFragment.Rect);
-				e.Graphics.DrawImage(pictureBox1.Image, draggedFragment.Location.X - draggedFragment.SourceRect.X, draggedFragment.Location.Y - draggedFragment.SourceRect.Y);
-
-				
-				e.Graphics.ResetClip();
-				ControlPaint.DrawFocusRectangle(e.Graphics, draggedFragment.Rect);
-			}
-			else
-			{
-				
-				if (mousePos1 != mousePos2)
-					ControlPaint.DrawFocusRectangle(e.Graphics, GetRect(mousePos1, mousePos2));
-			}
-		}
-
 
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e)//закрытие формы
 		{
@@ -360,29 +266,6 @@ namespace Paint_v4
 			Presed = false;
 			x1 = e.X;
 			y1 = e.Y;
-			buf.Push((Bitmap)bitmap.Clone());
-			metroLabel2.Text = buf.Count.ToString();
-			pictureBox1.Image = bitmap;
-
-			if (mousePos1 != mousePos2)
-			{
-				
-				var rect = GetRect(mousePos1, mousePos2);
-				draggedFragment = new DraggedFragment() { SourceRect = rect, Location = rect.Location };
-			}
-			else
-			{
-				
-				if (draggedFragment != null)
-				{
-					
-					draggedFragment.Fix(bitmap);
-					
-					draggedFragment = null;
-					mousePos1 = mousePos2 = e.Location;
-				}
-			}
-			pictureBox1.Invalidate();
 			if (e.Button == MouseButtons.Left)
 			{
 				Pen pen1 = new Pen(color, metroTrackBar1.Value);
@@ -436,23 +319,6 @@ namespace Paint_v4
 					}
 				}
 				pictureBox1.Invalidate();
-			}
-			if (e.Button == MouseButtons.Right)
-			{
-				
-				if (draggedFragment != null)
-				{
-					
-					draggedFragment.Location.Offset(e.Location.X - mousePos2.X, e.Location.Y - mousePos2.Y);
-					mousePos1 = e.Location;
-				}
-				
-				mousePos2 = e.Location;
-				pictureBox1.Invalidate();
-			}
-			else
-			{
-				mousePos1 = mousePos2 = e.Location;
 			}
 		}
 	}

@@ -52,8 +52,6 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.metroRadioButton1 = new MetroFramework.Controls.MetroRadioButton();
 			this.metroRadioButton2 = new MetroFramework.Controls.MetroRadioButton();
-			this.button1 = new System.Windows.Forms.Button();
-			this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
 			this.toolStrip3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -75,7 +73,7 @@
             this.toolStripButton9});
 			this.toolStrip3.Location = new System.Drawing.Point(20, 85);
 			this.toolStrip3.Name = "toolStrip3";
-			this.toolStrip3.Size = new System.Drawing.Size(32, 532);
+			this.toolStrip3.Size = new System.Drawing.Size(24, 532);
 			this.toolStrip3.TabIndex = 2;
 			this.toolStrip3.Text = "toolStrip3";
 			// 
@@ -85,7 +83,7 @@
 			this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
 			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton1.Name = "toolStripButton1";
-			this.toolStripButton1.Size = new System.Drawing.Size(29, 20);
+			this.toolStripButton1.Size = new System.Drawing.Size(21, 20);
 			this.toolStripButton1.Text = "Прямоугольник";
 			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
 			// 
@@ -172,7 +170,6 @@
 			this.pictureBox1.Size = new System.Drawing.Size(1127, 529);
 			this.pictureBox1.TabIndex = 3;
 			this.pictureBox1.TabStop = false;
-			this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
 			this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
 			this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
 			this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
@@ -319,33 +316,12 @@
 			this.metroRadioButton2.Text = "С заливкой";
 			this.metroRadioButton2.UseVisualStyleBackColor = true;
 			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(332, 25);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 20;
-			this.button1.Text = "button1";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// metroLabel2
-			// 
-			this.metroLabel2.AutoSize = true;
-			this.metroLabel2.Location = new System.Drawing.Point(413, 25);
-			this.metroLabel2.Name = "metroLabel2";
-			this.metroLabel2.Size = new System.Drawing.Size(16, 19);
-			this.metroLabel2.TabIndex = 21;
-			this.metroLabel2.Text = "0";
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.ClientSize = new System.Drawing.Size(1351, 637);
-			this.Controls.Add(this.metroLabel2);
-			this.Controls.Add(this.button1);
 			this.Controls.Add(this.metroRadioButton2);
 			this.Controls.Add(this.metroRadioButton1);
 			this.Controls.Add(this.label4);
@@ -365,7 +341,7 @@
 			this.MinimumSize = new System.Drawing.Size(1351, 637);
 			this.Name = "Form1";
 			this.Style = MetroFramework.MetroColorStyle.Green;
-			this.Text = "Paint2020";
+			this.Text = "ℙ𝕒𝕚𝕟𝕥";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 			this.toolStrip3.ResumeLayout(false);
 			this.toolStrip3.PerformLayout();
@@ -403,8 +379,6 @@
 		private System.Windows.Forms.Label label4;
 		private MetroFramework.Controls.MetroRadioButton metroRadioButton1;
 		private MetroFramework.Controls.MetroRadioButton metroRadioButton2;
-		private System.Windows.Forms.Button button1;
-		private MetroFramework.Controls.MetroLabel metroLabel2;
 	}
 }
 
